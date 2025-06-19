@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>P2R Character Sheet</title>
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="./CSS/style.css" type="text/css" rel="stylesheet">
+    <script type="module" src="./index.mjs" defer></script>
+</head>
+<body>
+    <header>
+      <h1>Stats</h1>
+      <nav>
+          <a href='feats&tools.html'>Feats & Equipment</a>
+          <a href='story.html'>Story</a>
+          <a href='spells.html'>Spells</a>
+          <a href='minions.html'>Minions</a>
+          <a href='notes.html'>Notes</a>
+      </nav>
+      <input type="file" id="loadbutton"/>
+      <p id ="message"></p>
+    </header>
+    <main>
+        <section class="frame">
+            <h3>
+                Frame
+            </h3>
+            <div>
+                <article>
+                    <h4>Name</h4>
+                    <p id="name">glob</p>
+                    <div>
+                        <p>Player: </p>
+                        <p id="playerName">Handbook</p>
+                    </div>
+                </article>
+                <article>
+                    <h4>Ancestry</h4>
+                    <p id="ancestry"></p>
+                    <div>
+                        <p>Heritage: </p>
+                        <p id="heritage"></p>
+                    </div>
+                    <div>
+                        <p>Size: </p>
+                        <p id="sizeName"></p>
+                    </div>
+                </article><article>
+                    <h4>Background</h4>
+                    <p id="background"></p>
+                    <div>
+                        <p>Attributes: </p>
+                        <p id="backgroundBoosts"></p>
+                    </div>
+                </article><article>
+                    <h4>Class</h4>
+                    <p id="class"></p>
+                    <div>
+                        <p id="subclassName">Subclass: </p>
+                        <p id="subclassChoice"></p>
+                    </div>
+                    <div>
+                        <p>Key Attribute: </p>
+                        <p id="keyAbility"></p>
+                    </div>
+                </article>
+                <article>
+                    <h4>Level</h4>
+                    <p id="level"></p>
+                    <div>
+                        <p>Xp: </p>
+                        <p id="xp"></p>
+                    </div>
+                </article>
+                <article class="heroPoints">
+                    <h4>Hero Points</h4>
+                    <h4 id="hero">o o o</h4>
+                </article>
+            </div>
+        </section>
+        <section class="attributes">
+            <h3>Attributes</h3>
+            <div>
+                <article>
+                    <div>
+                        <h4>Strength</h4>
+                        <h4 id="strmod"> 0</h4>
+                    </div>
+                    <input type="radio" name="strboost" id="strboost"/>
+                    <label for="strboost">Boost</label>
+                </article>
+                <article>
+                    <div>
+                        <h4>Dexterity</h4>
+                        <h4 id="dexmod">0</h4>
+                    </div>
+                    <input type="radio" name="dexboost" id="dexboost"/>
+                    <label for="dexboost">Boost</label>
+                </article>
+                <article>
+                    <div>
+                        <h4>Constitution</h4>
+                        <h4 id="conmod">0</h4>
+                    </div>
+                    <input type="radio" name="conboost" id="conboost"/>
+                    <label for="conboost">Boost</label>
+
+                </article>
+                <article>
+                    <div>
+                        <h4>Intelligence</h4>
+                        <h4 id="intmod">0</h4>
+                    </div>
+                    <input type="radio" name="intboost" id="intboost"/>
+                    <label for="intboost">Boost</label>
+                </article>
+                <article>
+                    <div>
+                        <h4>Wisdom</h4> 
+                        <h4 id="wismod">0</h4>
+                    </div>                        
+                    <input type="radio" name="wisboost" id="wisboost"/>
+                    <label for="wisboost">Boost</label>
+                </article>
+                <article>
+                    <div>
+                        <h4>Charisma</h4>
+                        <h4 id="chamod">0</h4>
+                    </div>
+                    <input type="radio" name="chaboost" id="chaboost"/>
+                    <label for="chaboost">Boost</label>
+                </article>
+            </div>
+        </section>
+        <section class="defense">
+            <h3>Defense</h3>
+            <div>
+                <div id="armorclass">
+                    <article id="armor">
+                        <div>
+                            <h4>Armor</h4>
+                            <h4 id="acTotal" class="result">10</h4>
+                        </div>
+                        <div>
+                            <p class="proficiency" id="proficiencyarmor"></p>
+                            <aside id="modsarmorclass" class="armorclass">
+                                <div> 
+                                    <p>10</p>
+                                    <p>Base</p>
+                                </div>
+                                <p>+</p>
+                                <div> 
+                                    <p class="dexmod">0</p>
+                                    <p>Dex</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="proficiencybonus" id="proficiencybonusarmor">0</p>
+                                    <p>Prof</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="itembonus">0</p>
+                                    <p>Item</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="statusbonus">0</p>
+                                    <p>Stat</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="circomstancebonus">0</p>
+                                    <p>Circ</p>
+                                </div>
+                            </aside>
+                        </div>
+                    </article>
+                </div>
+                <div id="saves">
+                    <article>
+                        <div>
+                            <h4>Fort</h4>
+                            <h4 id="fortitude" class="result">0</h4>
+                        </div>
+                        <div>
+                            <p class="proficiency" id="proficiencyfortitude"></p>
+                            <aside id="modsfortitude" class="saves">
+                                <div> 
+                                    <p class="conmod">0</p>
+                                    <p>Con</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="proficiencybonus" id="proficiencybonusfortitude">20</p>
+                                    <p>Prof</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="itembonus">0</p>
+                                    <p>Item</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="statusbonus">0</p>
+                                    <p>Stat</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="circomstancebonus">0</p>
+                                    <p>Circ</p>
+                                </div>
+                            </aside>
+                        </div>
+                    </article>
+                    <article>
+                        <div>
+                            <h4>Ref</h4>
+                            <h4 id="reflex" class="result"></h4>
+                        </div>
+                        <div>
+                            <p class="proficiency" id="proficiencyreflex"></p>
+                            <aside id="modsreflex" class="saves">
+                                <div>
+                                    <p class="dexmod" id="modreflex"></p>
+                                    <p>Dex</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="proficiencybonus" id="proficiencybonusreflex"></p>
+                                    <p>Prof</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="itembonus" id="itembonusreflex"></p>
+                                    <p>Item</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="statusbonus"></p>
+                                    <p>Stat</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="circomstancebonus"></p>
+                                    <p>Circ</p>
+                                </div>
+                            </aside>
+                        </div>
+                    </article>
+                    <article>
+                        <div>
+                            <h4>Will</h4>
+                            <h4 id="will" class="result"></h4>
+                        </div>
+                        <div>
+                            <p class="proficiency" id="proficiencywill"></p>
+                            <aside id="modswill" class="saves">
+                                <div>
+                                    <p class="wismod"></p>
+                                    <p>Wis</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="proficiencybonus"></p>
+                                    <p>Prof</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="itembonus"></p>
+                                    <p>Item</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="statusbonus"></p>
+                                    <p>Stat</p>
+                                </div>
+                                <p>+</p>
+                                <div>
+                                    <p class="circomstancebonus"></p>
+                                    <p>Circ</p>
+                                </div>
+                            </aside>
+                        </div>
+                    </article>
+                </div>
+                <div id="hitpoints">
+                    <article class="hitpoints">
+                        <div>
+                            <h5>Max HP</h5>
+                            <p id="hpmax"></p>
+                        </div>
+                        <div>
+                            <h5>Current HP</h5>
+                            <p id="hp"></p>
+                        </div>
+                        <aside id="modshp">
+                            <p class="conmod"></p>
+                            <p class="ancestryhp"></p>
+                            <p class="classhp"></p>
+                            <p class="bonushp"></p>
+                            <p class="bonushpPerLevel"></p>
+                        </aside>
+                    </article>
+                </div>
+            </div>
+        <section class="languages">
+            <h5>Languages</h5>
+            <p>Common</p>
+        </section>
+        <section class="perception">
+
+        </section>
+        <section class="speed">
+
+        </section>
+        <section class="skills">
+            <h3>Skills</h3>
+            <article>
+                <div>
+                    <h5>Accrobatics</h5>
+                    <p id="accrobatics"></p>
+                </div>
+                <div>
+                    <p class="proficiency" id="proficiencyaccrobatics"></p>
+                    <aside id="modsaccrobatics">
+                        <p class="dexmod"></p>
+                        <p class="proficiencybonus"></p>
+                        <p class="itembonus"></p>
+                        <p class="statusbonus"></p>
+                        <p class="circomstancebonus"></p>
+                        <p class="armorpenalty"></p>
+                    </aside>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h5>Athletics</h5>
+                    <p id="athletics"></p>
+                </div>
+                <div>
+                    <p class="proficiency" id="proficiencyathletics"></p>
+                    <aside id="modsathletics">
+                        <p class="strmod"></p>
+                        <p class="proficiencybonus"></p>
+                        <p class="itembonus"></p>
+                        <p class="statusbonus"></p>
+                        <p class="circomstancebonus"></p>
+                        <p class="armorpenalty"></p>
+                    </aside>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h5>Arcana</h5>
+                    <p id="arcana"></p>
+                </div>
+                <div>
+                    <p class="proficiency" id="proficiencyarcana"></p>
+                    <aside id="modsarcanas">
+                        <p class="intmod"></p>
+                        <p class="proficiencybonus"></p>
+                        <p class="itembonus"></p>
+                        <p class="statusbonus"></p>
+                        <p class="circomstancebonus"></p>
+                    </aside>
+                </div>
+            </article>
+            
+        </section>
+        <section class="strikes"></section>
+        <section class="proficiencies">
+            <article>
+                <h5>Armors</h5>
+                <ul>
+                    <li>
+                        <p>Unarmored: </p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>Light: </p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>Medium: </p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>Heavy: </p>
+                        <p></p>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h5>Weapons</h5>
+                <ul>
+                    <li>
+                        <p>Unarmed: </p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>Simple: </p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>Martial:</p>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>Advanced:</p>
+                        <p></p>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h5>Spell Attack and DC</h5>
+            </article>
+        </section>
+        <section class="bulk"></section>
+        <section class="wealth"></section>
+        <section class="inventory"></section>
+        <section class="look"></section>
+        <section class="personality"></section>
+        <section class="notes"></section>
+        <section class="traditions"></section>
+        <section class="spells"></section>
+        <section class="focus"></section>
+        <section class="rituals"></section>
+    </main>
+    <footer>
+
+    </footer>
+</body>

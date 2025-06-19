@@ -1,0 +1,56 @@
+* {
+    background-color: white;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 3px 0 0 0;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: space-between;
+}
+
+body,
+header, 
+main,
+section {
+    width: 100%;
+}
+
+.armorclass div,
+.saves div {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    font-size: small;
+    margin-top: 0px;
+    justify-content: start;
+}
+
+.saves {
+    min-width: fit-content;
+}
+
+#saves {
+    min-width: 55%;
+}
+
+aside,
+section div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+section div article {
+    min-width: 16%;
+}
+
+p {
+    padding-left: 2px;
+}
