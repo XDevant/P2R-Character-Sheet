@@ -1,7 +1,7 @@
 import Bards from './Bards.mjs';
 import Clerics from './Clerics.mjs';
 
-const charClasses = {
+export const charClasses = {
     Bards, Clerics
 };
 

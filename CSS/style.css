@@ -20,6 +20,8 @@ section {
     width: 100%;
 }
 
+#hitpoints,
+#hitpoints article,
 .armorclass div,
 .saves div {
     display: flex;
@@ -37,6 +39,7 @@ section {
 #saves {
     min-width: 55%;
 }
+
 
 aside,
 section div {

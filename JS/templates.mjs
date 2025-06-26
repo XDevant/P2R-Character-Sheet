@@ -14,28 +14,19 @@ export class PlayerCharacters {
     heritage = null;
     background = null;
     deity = null;
+    attributes = null
 
     constructor(name="", charClass=null, ancestry=null, background=null, dict=null) {
-        if (dict) {
-            for (const [key, value] of Object.entries(dict)) {
-                if (value) {
-                    this[key] = value;
-                }
-            }
-        } else {
-            if (charClass) {
-                const DyClass = dynamicCharClasses(charClass);
-                this.charClass = new DyClass();
-            }
-            if (ancestry) {
-                this.ancestry = new Ancestries(ancestry);
-            }
-            if (background) {
-                this.background = new Backgrounds(background);
-            }
-        }
-        this.name = name;
+        super(name, charClass, ancestry, background, dict);
     }
+    
+    setCharClass() {};
+    setAncestry() {};
+    setBackgronud() {};
+    selectCharClass() {};
+    selectAncestry() {};
+    selectBackgronud() {};
+
 }
 
 class Feats {
