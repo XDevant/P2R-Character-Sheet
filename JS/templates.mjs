@@ -1,33 +1,5 @@
-import { dynamicCharClasses } from "./CharClasses/DynamicCharClasses.mjs";
-import Ancestries from "./Ancestries/Ancestries.mjs";
-import Backgrounds from "./Backgrounds/Backgrounds.mjs";
-import Deities from "./Deities/Deities.mjs";
-import Heritages from "./Ancestries/Heritages.mjs";
 import Attributes from "./Attributes.mjs";
 
-export class PlayerCharacters {
-    name = "Placeholder";
-    class = null;
-    level = 1;
-    dualClass = null;
-    ancestry = null;
-    heritage = null;
-    background = null;
-    deity = null;
-    attributes = null
-
-    constructor(name="", charClass=null, ancestry=null, background=null, dict=null) {
-        super(name, charClass, ancestry, background, dict);
-    }
-    
-    setCharClass() {};
-    setAncestry() {};
-    setBackgronud() {};
-    selectCharClass() {};
-    selectAncestry() {};
-    selectBackgronud() {};
-
-}
 
 class Feats {
     name = "";
@@ -50,12 +22,6 @@ const chkAttr = new Attributes({
         20: ["str"],
     }, 15)
 
-
-let sep = new PlayerCharacters("sep", "Clerics");
-const DyClass = dynamicCharClasses("Clerics");
-let chkClass = new DyClass({"subclassChoice": "Cloistered Cleric"});
-console.log(sep.name);
-console.log(chkClass.subclassChoice);
 
 let pc = {
     "name": "Placeholder",

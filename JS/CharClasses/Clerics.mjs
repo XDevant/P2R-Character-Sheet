@@ -25,7 +25,3 @@ export default class Clerics extends CharClasses {
     };
 
 }
-
-let clerc = new Clerics({"subclassChoice": "Cloistered Cleric"})
-console.log(clerc.increasedSkillRate)
-console.log(clerc.features[1][0])

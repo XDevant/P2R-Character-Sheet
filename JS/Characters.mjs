@@ -5,9 +5,9 @@ import Deities from "./Deities/Deities.mjs";
 import Heritages from "./Ancestries/Heritages.mjs";
 import Attributes from "./Attributes.mjs";
 
-export class PlayerCharacters {
+export default class Characters {
     name = "Placeholder";
-    class = null;
+    charClass = null;
     level = 1;
     dualClass = null;
     ancestry = null;
@@ -15,41 +15,37 @@ export class PlayerCharacters {
     background = null;
     deity = null;
 
-    constructor(name="", charClass=null, ancestry=null, background=null, dict=null) {
-        if (name) {
-            this.name = name;
-        } else {
-            if (dict && dict.name) {
-                this.name = dict.name;
-            }
+    constructor(dict) {
+        this.name = dict.name;
+        if (this.checkDictKey("class", dict)) {
+            this.setCharClass(dict.class, dict);
         }
-        if (charClass) {
-            this.setCharClass(charClass)
-        } else {
-            if (this.checkDictKey("charClass", dict)) {
-                this.setCharClass(dict.charClass);
-            }
+        if (this.checkDictKey("ancestry", dict)) {
+            this.setAncestry(dict.ancestry);
         }
-        if (ancestry) {
-                this.ancestry = new Ancestries(ancestry);
-        }
-        if (background) {
-                this.background = new Backgrounds(background);
+        if (this.checkDictKey("background", dict)) {
+            this.setBackground(dict.background);
         }
     }
 
     checkDictKey(key, dict) {
-        if (dict) {
+        if (dict && Object.keys(dict).includes(key)) {
             return true;
-        return false;
         }
+        return false;
     }
-    
-    setCharClass(charClass) {
-        const DyClass = dynamicCharClasses(charClass);
-        this.charClass = new DyClass();
+
+    setCharClass(charClass, dict) {
+        const DyClass = dynamicCharClasses(charClass + "s");
+        this.charClass = new DyClass(dict);
     }
-    setAncestry() {};
-    setBackgronud() {};
+
+    setAncestry(ancestry) {
+        this.ancestry = new Ancestries(ancestry)
+    }
+
+    setBackground(background) {
+        this.background = new Backgrounds(background);
+    }
 
 }

@@ -5,7 +5,7 @@ export const charClasses = {
     Bards, Clerics
 };
 
-export function dynamicCharClasses (name) {
+export function dynamicCharClasses(name) {
      return charClasses[name];
     };
 
