@@ -1,18 +1,14 @@
 import Characters from "./Characters.mjs";
 
 export default class PlayerCharacters extends Characters{
-    name = "Placeholder";
-    charClass = null;
-    level = 1;
-    dualClass = null;
-    ancestry = null;
-    heritage = null;
-    background = null;
-    deity = null;
-    attributes = null;
 
     constructor(dict) {
         super(dict);
+    }
+
+    setLevel(level) {
+        super.setLevel(level);
+        this.displayLevel();
     }
     
     setCharClass(charClass) {
@@ -22,17 +18,29 @@ export default class PlayerCharacters extends Characters{
 
     setAncestry(ancestry) {
         super.setAncestry(ancestry)
+        this.displayAncestry();
     }
 
-    setBackgronud(background) {
+    setBackground(background) {
         super.setBackground(background);
+        this.displayBackground();
     }
 
     displaycharClass() {
         document.getElementById("class").textContent = this.charClass.name;
     }
 
+    displayLevel() {
+        document.getElementById("level").textContent = this.level;
+    }
 
+    displayAncestry() {
+        document.getElementById("ancestry").textContent = this.ancestry.name;
+    }
+
+    displayBackground() {
+        document.getElementById("background").textContent = this.background.name;
+    }
     
     selectCharClass() {};
     selectAncestry() {};

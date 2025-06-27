@@ -2,7 +2,7 @@
 
 export default class Ancestries {
     name = "weak human"
-    attributeBoosts = [];
+    attributeBoosts = 1;
     ancestryFlaws = [];
     ancestryBoosts = [];
     hp = 4;

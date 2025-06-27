@@ -26,6 +26,9 @@ export default class Characters {
         if (this.checkDictKey("background", dict)) {
             this.setBackground(dict.background);
         }
+        if (this.checkDictKey("level", dict)) {
+            this.setLevel(dict.level);
+        }
     }
 
     checkDictKey(key, dict) {
@@ -35,13 +38,17 @@ export default class Characters {
         return false;
     }
 
+    setLevel(level) {
+        this.level = level;
+    }
+
     setCharClass(charClass, dict) {
         const DyClass = dynamicCharClasses(charClass + "s");
         this.charClass = new DyClass(dict);
     }
 
     setAncestry(ancestry) {
-        this.ancestry = new Ancestries(ancestry)
+        this.ancestry = new Ancestries(ancestry);
     }
 
     setBackground(background) {

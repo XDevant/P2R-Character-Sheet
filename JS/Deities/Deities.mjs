@@ -1,4 +1,4 @@
-
+import { deitiesDict } from "./Dict.mjs";
 
 export default class Deities {
     name = ""
@@ -20,10 +20,12 @@ export default class Deities {
     members = [];
     description = "";
 
-    constructor (name, status="FOLLOWER", edicts="", anathema="", dict=null) {
+    constructor (name) {
         this.name = name;
-        this.status = status;
-        this.edicts = edicts;
-        this.anathema = anathema;
+        if (Object.keys(deitiesDict).includes(name)) {
+                    Object.keys(deitiesDict[name]).forEach( key => {
+                        this[key] = deitiesDict[name][key];
+                    })
+                }
     }
 }

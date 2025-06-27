@@ -1,7 +1,7 @@
-
+import { backgroundDict } from "./Dict.mjs";
 
 export default class Backgrounds {
-    name = "";
+    name = "Unknown";
     attributeBoosts = [];
     attributeFreeBoosts = 1;
     attributeBoostChoice = [];
@@ -11,6 +11,11 @@ export default class Backgrounds {
     description = "";
 
     constructor (name) {
-        this.name = name
+        this.name = name;
+        if (Object.keys(backgroundDict).includes(name)) {
+            Object.keys(backgroundDict[name]).forEach( key => {
+                this[key] = backgroundDict[name][key];
+            })
+        }
     }
 }
