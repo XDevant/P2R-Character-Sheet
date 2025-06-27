@@ -1,5 +1,5 @@
 import { dynamicCharClasses } from "./CharClasses/DynamicCharClasses.mjs";
-import Ancestries from "./Ancestries/Ancestries.mjs";
+import { dynamicAncestry } from "./Ancestries/DynamicAncestries.mjs";
 import Backgrounds from "./Backgrounds/Backgrounds.mjs";
 import Deities from "./Deities/Deities.mjs";
 import Heritages from "./Ancestries/Heritages.mjs";
@@ -21,7 +21,7 @@ export default class Characters {
             this.setCharClass(dict.class, dict);
         }
         if (this.checkDictKey("ancestry", dict)) {
-            this.setAncestry(dict.ancestry);
+            this.setAncestry(dict.ancestry, dict);
         }
         if (this.checkDictKey("background", dict)) {
             this.setBackground(dict.background);
@@ -47,8 +47,9 @@ export default class Characters {
         this.charClass = new DyClass(dict);
     }
 
-    setAncestry(ancestry) {
-        this.ancestry = new Ancestries(ancestry);
+    setAncestry(ancestry, dict) {
+        const DyAncestry = dynamicAncestry(ancestry + "s");
+        this.ancestry = new DyAncestry(dict);
     }
 
     setBackground(background) {

@@ -1,6 +1,6 @@
 import Ancestries from "./Ancestries.mjs";
 
-export default class Elves extends Ancestries {
+export default class Elfs extends Ancestries {
     name = "Elf"
     attributeBoosts = 1;
     ancestryFlaws = ["con"];
@@ -16,4 +16,5 @@ export default class Elves extends Ancestries {
     bonusLanguages = 0;
     languageList = ["Draconic", "Empyrean", "Fey", "Gnomish", "Goblin", "Kholo", "Orcish"];
     description = "";
+    heritages = {};
 }

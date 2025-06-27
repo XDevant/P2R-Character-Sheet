@@ -1,4 +1,4 @@
-
+import { Aiuvarin, Dromaar } from "./HeritagesVersatiles.mjs";
 
 export default class Ancestries {
     name = "weak human"
@@ -17,8 +17,31 @@ export default class Ancestries {
     bonusLanguages = 0;
     languageList = [];
     description = "";
+    heritage = null;
+    versatileHeritages = {"Aiuvarin": Aiuvarin, "Dromaar": Dromaar};
+    heritages = {};
+    featChoice = [];
 
-    constructor (name) {
-        this.name = name
+    constructor (dict) {
+        if (dict && Object.keys(dict).includes("heritage")) {
+            this.setHeritage(dict["heritage"]);
+        }
+    }
+    
+    setHeritage(choice) {
+        if (this.versatileHeritages) {
+            if (choice && choice in this.versatileHeritages) {
+                const heritages = this.versatileHeritages[choice];
+                this.heritage = new heritages();
+                return;
+            }
+        }
+        if (this.heritages) {
+            if (choice && choice in this.heritages) {
+                const heritages = this.heritages[choice];
+                this.heritage = new heritages();
+                return;
+            }
+        }
     }
 }

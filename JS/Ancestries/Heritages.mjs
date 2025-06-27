@@ -11,6 +11,7 @@ export default class Heritages {
     proficiencies = [];
     bonusLanguages = [];
     description = "";
+    featChoice = [];
 
     constructor (name) {
         this.name = name
