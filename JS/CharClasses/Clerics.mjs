@@ -1,11 +1,14 @@
 import CharClasses from './CharClasses.mjs';
+import { CloisteredClerics, Warpriests } from './Doctrines.mjs';
+
 
 export default class Clerics extends CharClasses {
     level = 7;
     name = "Cleric"
     hpPerLevel = 8;
-    keyattribute = "wis";
+    keyattributes = ["wis"];
     subclassName = "Doctrine";
+    subclassList = {"Cloistered Cleric": CloisteredClerics, "Warpriest": Warpriests};
     spellcasting = true;
     spellcastingType = "prepared";
     spellcastingTradition = "Divine";
@@ -20,7 +23,7 @@ export default class Clerics extends CharClasses {
     edicts = "";
     anathema = "";
 
-    constructor (dict) {
+    constructor(dict) {
         super(dict);
     };
 

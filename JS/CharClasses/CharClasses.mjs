@@ -2,8 +2,10 @@ export default class CharClasses {
     name = "";
     hpPerLevel = 4;
     keyattribute = "";
+    keyattributes = [];
     subclassName = "";
-    subclassChoice = "";
+    subclassChoice = null;
+    subclassList = {};
     spellcasting = false;
     spellcastingType = "";
     spellcastingTradition = "";
@@ -20,10 +22,30 @@ export default class CharClasses {
     edicts = "Roll d20s.";
     anathema = "Don't puke over GM's screen.";
 
-    constructor (dict) {
-        if (dict) {
-            for (const [key, value] of Object.entries(dict)) {
-                if (value) {this[key] = value;}
+    constructor(dict) {
+        if (dict && Object.keys(dict).includes("subclassChoice")) {
+            this.setSubclass(dict["subclassChoice"]);
+        }
+        if (dict && Object.keys(dict).includes("keyattribute")) {
+            this.setKeyattribute(dict["keyattribute"]);
+        }
+    }
+
+    setSubclass(choice) {
+        if (this.subclassList) {
+            if (choice && choice in this.subclassList) {
+                const subclasses = this.subclassList[choice];
+                this.subclassChoice = new subclasses();
+            }
+        }
+    }
+
+    setKeyattribute(attr) {
+        if (this.keyattributes) {
+            if (attr && attr in this.keyattributes) {
+                this.keyattribute = attr;
+            } else {
+                this.keyattribute = this.keyattributes[0];
             }
         }
     }

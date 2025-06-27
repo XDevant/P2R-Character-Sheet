@@ -63,8 +63,12 @@ export default class Controlers {
         let dict = {"base": ""};
         if (obj) {
             baseData.forEach(key => {
+                let oldkey = key;
+                if (key === "keyattribute") {
+                    oldkey = "keyability";
+                }
                 if (Controlers.checkImport(key, obj)) {
-                    dict[key] = obj.build[key];
+                    dict[key] = obj.build[oldkey];
                 }
             })
         }

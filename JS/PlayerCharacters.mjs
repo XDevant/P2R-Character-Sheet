@@ -33,7 +33,7 @@ export default class PlayerCharacters extends Characters{
     }
 
 
-
+    
     selectCharClass() {};
     selectAncestry() {};
     selectBackgronud() {};
