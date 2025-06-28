@@ -1,7 +1,7 @@
 import PlayerCharacters from "./PlayerCharacters.mjs";
 import Boards from "./Boards.mjs";
 
-const baseData = ["name", "level", "ancestry", "heritage", "background", "class", "subclassChoice"];
+const baseData = ["name", "level", "ancestry", "heritage", "background", "class", "subclassChoice", "deity"];
 const breakDictFactory = () => {
     return {"ancestryBoosts": [], "ancestryFlaws": [], "backgroundBoosts": [], "classBoosts": [], 1: [], 5: [], 10: [], 15: [], 20: [], "apex": 0,};
 }
@@ -81,11 +81,17 @@ export default class Controlers {
                         dict.breakdown[parseInt(key)] = obj.build.abilities.breakdown.mapLevelledBoosts[key];
                     }
                 })
-                if (Controlers.checkImport("ancestryFree", obj.build.abilities.breakdown)) {
-                    dict.breakdown.ancestryBoosts = obj.build.abilities.breakdown.ancestryFree;
+                if (Controlers.checkImport("ancestryFree", obj.build.abilities.breakdown) && Controlers.checkImport("ancestryBoosts", obj.build.abilities.breakdown)) {
+                    dict.breakdown.ancestryBoosts = obj.build.abilities.breakdown.ancestryFree.concat(obj.build.abilities.breakdown.ancestryBoosts);
+                }
+                if (Controlers.checkImport("ancestryFlaws", obj.build.abilities.breakdown)) {
+                    dict.breakdown.ancestryFlaws = obj.build.abilities.breakdown.ancestryFlaws;
                 }
                 if (Controlers.checkImport("backgroundBoosts", obj.build.abilities.breakdown)) {
                     dict.breakdown.backgroundBoosts = obj.build.abilities.breakdown.backgroundBoosts;
+                }
+                if (Controlers.checkImport("classBoosts", obj.build.abilities.breakdown)) {
+                    dict.breakdown.classBoosts = obj.build.abilities.breakdown.classBoosts;
                 }
             }
         }

@@ -1,33 +1,8 @@
 
 export default class Attributes {
-    mods = {
-        "str": 0,
-        "dex": 0,
-        "con": 0,
-        "int": 0,
-        "wis": 0,
-        "cha": 0,
-    };
-    boosts = {
-        "str": false,
-        "dex": false,
-        "con": false,
-        "int": false,
-        "wis": false,
-        "cha": false,
-    };
-    breakdown = {
-        "ancestryBoosts": [],
-        "ancestryFlaws": [],
-        "backgroundBoosts": [],
-        "classBoosts": [],
-        1: [],
-        5: [],
-        10: [],
-        15: [],
-        20: [],
-        "apex": 0,
-    };
+    mods = {"str": 0, "dex": 0, "con": 0, "int": 0, "wis": 0, "cha": 0};
+    boosts = {"str": false, "dex": false, "con": false, "int": false, "wis": false, "cha": false};
+    breakdown = {"ancestryBoosts": [], "ancestryFlaws": [], "backgroundBoosts": [], "classBoosts": [], 1: [], 5: [], 10: [], 15: [], 20: [], "apex": 0};
     checked = false;
 
     constructor(breakDict, level) {
@@ -38,14 +13,8 @@ export default class Attributes {
     }
 
     calcMods (level) {
-        let mods = {
-            "str": 0,
-            "dex": 0,
-            "con": 0,
-            "int": 0,
-            "wis": 0,
-            "cha": 0,
-            };
+        let mods = {"str": 0, "dex": 0, "con": 0, "int": 0, "wis": 0, "cha": 0};
+
         this.breakdown.ancestryBoosts.forEach(
             (attrib) => mods[attrib.toLowerCase()] += 1
         )
@@ -58,7 +27,6 @@ export default class Attributes {
         this.breakdown.ancestryFlaws.forEach((attribute) => {
             mods[attribute.toLowerCase()] -= 1;
         })
-        console.log(mods);
         this.breakdown[1].forEach(
             (attrib) => mods[attrib.toLowerCase()] += 1
         )
@@ -82,8 +50,6 @@ export default class Attributes {
                 mods[attribute.toLowerCase()] += 1;
             });
         }
-
-        console.log(mods);
         for (const [key, value] of Object.entries(mods)) {
             if (value > 4) {
                 const normValue = Math.floor((value - 4) / 2) + 4;

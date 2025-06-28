@@ -1,7 +1,7 @@
 
 
 export default class Heritages {
-    name = ""
+    name = "Unknown"
     lowLightVision = false;
     darkvision = false;
     hp = 0;

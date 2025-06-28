@@ -27,9 +27,19 @@ export default class PlayerCharacters extends Characters{
         this.displayBackground();
     }
 
+    setDeity(deity) {
+        super.setDeity(deity);
+        this.displayDeity();
+    }
+
     setAttributes(breakDict) {
         super.setAttributes(breakDict);
         this.displayAttributes();
+    }
+
+    setHPMax() {
+        super.setHPMax();
+        this.displayHP();
     }
 
     displayCharClass() {
@@ -60,11 +70,24 @@ export default class PlayerCharacters extends Characters{
         document.getElementById("background").textContent = this.background.name;
     }
 
+    displayDeity() {
+        console.log(this.deity);
+    }
+
     displayAttributes() {
         Object.keys(this.attributes.mods).forEach(key => {
             document.getElementById(key.toLowerCase() + "mod").textContent = this.attributes.mods[key];
             document.getElementById(key.toLowerCase() + "boost").checked = this.attributes.boosts[key];
         })
+    }
+
+    displayHP() {
+        document.getElementById("hpmax").textContent = this.hp.hpmax;
+        document.getElementById("hp").textContent = this.hp.hp;
+        document.getElementById("ancestryhp").textContent = this.hp.ancestryhp;
+        document.getElementById("classhppl").textContent = this.hp.classhppl;
+        document.getElementById("bonushp").textContent = this.hp.bonushp;
+        document.getElementById("bonushppl").textContent = this.hp.bonushppl;
     }
     
     selectCharClass() {};

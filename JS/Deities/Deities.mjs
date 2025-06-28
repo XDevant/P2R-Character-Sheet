@@ -3,17 +3,17 @@ import { deitiesDict } from "./Dict.mjs";
 export default class Deities {
     name = ""
     edicts = "";
-    anathemas = "";
-    areaOfConcern = "";
+    anathema = "";
+    areasOfConcern = "";
     sacredSymbol = "";
+    sacredAnimal = "";
     sacredColor ="";
     attribute = "";
     skill = "";
     favoredWeapon = "";
-    fonts = "";
-    fontChoice = [];
-    sanctification = "NO";
-    sanctificationOptions = [];
+    font = "";
+    fonts = [];
+    sanctifications = [];
     domains = [];
     spells = [];
     pantheons = [];

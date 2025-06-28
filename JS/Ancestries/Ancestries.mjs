@@ -1,4 +1,5 @@
 import { Aiuvarin, Dromaar } from "./HeritagesVersatiles.mjs";
+import Heritages from "./Heritages.mjs";
 
 export default class Ancestries {
     name = "weak human"
@@ -17,7 +18,7 @@ export default class Ancestries {
     bonusLanguages = 0;
     languageList = [];
     description = "";
-    heritage = {"name": "Unknown"};
+    heritage = new Heritages();
     versatileHeritages = {"Aiuvarin": Aiuvarin, "Dromaar": Dromaar};
     heritages = {};
     featChoice = [];
