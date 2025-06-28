@@ -4,7 +4,7 @@ export default class CharClasses {
     keyattribute = "";
     keyattributes = [];
     subclassName = "";
-    subclassChoice = null;
+    subclassChoice = {"name": "Unknow"};
     subclassList = {};
     spellcasting = false;
     spellcastingType = "";
@@ -22,18 +22,11 @@ export default class CharClasses {
     edicts = "Roll d20s.";
     anathema = "Don't puke over GM's screen.";
 
-    constructor(dict) {
-        if (dict && Object.keys(dict).includes("subclassChoice")) {
-            this.setSubclass(dict["subclassChoice"]);
-        }
-        if (dict && Object.keys(dict).includes("keyattribute")) {
-            this.setKeyattribute(dict["keyattribute"]);
-        }
-    }
+    constructor(dict) {}
 
     setSubclass(choice) {
         if (this.subclassList) {
-            if (choice && choice in this.subclassList) {
+            if (choice && Object.keys(this.subclassList).includes(choice)) {
                 const subclasses = this.subclassList[choice];
                 this.subclassChoice = new subclasses();
             }

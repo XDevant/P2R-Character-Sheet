@@ -17,16 +17,12 @@ export default class Ancestries {
     bonusLanguages = 0;
     languageList = [];
     description = "";
-    heritage = null;
+    heritage = {"name": "Unknown"};
     versatileHeritages = {"Aiuvarin": Aiuvarin, "Dromaar": Dromaar};
     heritages = {};
     featChoice = [];
 
-    constructor (dict) {
-        if (dict && Object.keys(dict).includes("heritage")) {
-            this.setHeritage(dict["heritage"]);
-        }
-    }
+    constructor(dict) {}
     
     setHeritage(choice) {
         if (this.versatileHeritages) {

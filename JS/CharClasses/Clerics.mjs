@@ -25,6 +25,20 @@ export default class Clerics extends CharClasses {
 
     constructor(dict) {
         super(dict);
-    };
+        if (dict && Object.keys(dict).includes("subclassChoice")) {
+            this.setSubclass(dict["subclassChoice"]);
+        }
+        if (dict && Object.keys(dict).includes("keyattribute")) {
+            this.setKeyattribute(dict["keyattribute"]);
+        }
+    }
+
+    setSubclass(choice) {
+        super.setSubclass(choice);
+    }
+
+    setKeyattribute(attr) {
+        super.setKeyattribute(attr);
+    }
 
 }

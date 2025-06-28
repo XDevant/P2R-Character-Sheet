@@ -1,7 +1,10 @@
 import PlayerCharacters from "./PlayerCharacters.mjs";
 import Boards from "./Boards.mjs";
 
-const baseData = ["name", "level", "ancestry", "heritage", "background", "class"];
+const baseData = ["name", "level", "ancestry", "heritage", "background", "class", "subclassChoice"];
+const breakDictFactory = () => {
+    return {"ancestryBoosts": [], "ancestryFlaws": [], "backgroundBoosts": [], "classBoosts": [], 1: [], 5: [], 10: [], 15: [], 20: [], "apex": 0,};
+}
 
 export default class Controlers {
     document = "<p classe='message'></p>";
@@ -62,21 +65,35 @@ export default class Controlers {
     static buildToDict(obj) {
         let dict = {"base": ""};
         if (obj) {
-            baseData.forEach(key => {
+           baseData.forEach(key => {
                 let oldkey = key;
                 if (key === "keyattribute") {
                     oldkey = "keyability";
                 }
-                if (Controlers.checkImport(key, obj)) {
+                if (Controlers.checkImport(key, obj.build)) {
                     dict[key] = obj.build[oldkey];
                 }
-            })
+            });
+            if (Controlers.checkImport("abilities", obj.build) && Controlers.checkImport("breakdown", obj.build.abilities)) {
+                dict["breakdown"] = breakDictFactory();
+                ["1", "5", "10", "15", "20"].forEach( key => {
+                    if (Controlers.checkImport(key, obj.build.abilities.breakdown.mapLevelledBoosts)) {
+                        dict.breakdown[parseInt(key)] = obj.build.abilities.breakdown.mapLevelledBoosts[key];
+                    }
+                })
+                if (Controlers.checkImport("ancestryFree", obj.build.abilities.breakdown)) {
+                    dict.breakdown.ancestryBoosts = obj.build.abilities.breakdown.ancestryFree;
+                }
+                if (Controlers.checkImport("backgroundBoosts", obj.build.abilities.breakdown)) {
+                    dict.breakdown.backgroundBoosts = obj.build.abilities.breakdown.backgroundBoosts;
+                }
+            }
         }
         return dict;
     }
 
     static checkImport(key, dict) {
-        if (Object.keys(dict.build).includes(key)) {
+        if (Object.keys(dict).includes(key)) {
             return true;
         }
         return false;

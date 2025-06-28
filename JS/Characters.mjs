@@ -2,7 +2,6 @@ import { dynamicCharClasses } from "./CharClasses/DynamicCharClasses.mjs";
 import { dynamicAncestry } from "./Ancestries/DynamicAncestries.mjs";
 import Backgrounds from "./Backgrounds/Backgrounds.mjs";
 import Deities from "./Deities/Deities.mjs";
-import Heritages from "./Ancestries/Heritages.mjs";
 import Attributes from "./Attributes.mjs";
 
 export default class Characters {
@@ -11,7 +10,6 @@ export default class Characters {
     level = 1;
     dualClass = null;
     ancestry = null;
-    heritage = null;
     background = null;
     deity = null;
 
@@ -29,6 +27,7 @@ export default class Characters {
         if (this.checkDictKey("level", dict)) {
             this.setLevel(dict.level);
         }
+        this.setAttributes(dict.breakdown)
     }
 
     checkDictKey(key, dict) {
@@ -54,6 +53,10 @@ export default class Characters {
 
     setBackground(background) {
         this.background = new Backgrounds(background);
+    }
+
+    setAttributes(breakdown) {
+        this.attributes = new Attributes(breakdown, this.level);
     }
 
 }

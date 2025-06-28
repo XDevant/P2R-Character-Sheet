@@ -17,4 +17,15 @@ export default class Elfs extends Ancestries {
     languageList = ["Draconic", "Empyrean", "Fey", "Gnomish", "Goblin", "Kholo", "Orcish"];
     description = "";
     heritages = {};
+
+    constructor(dict) {
+        super(dict);
+        if (dict && Object.keys(dict).includes("heritage")) {
+            this.setHeritage(dict.heritage);
+        }
+    }
+
+    setHeritage(heritage) {
+        super.setHeritage(heritage)
+    }
 }

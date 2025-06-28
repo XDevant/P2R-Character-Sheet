@@ -1,6 +1,7 @@
 import Heritages from "./Heritages.mjs";
 
 export class Aiuvarin extends Heritages {
+    name = "Aiuvarin";
     lowLightVision = true;
     featChoice = ["elf", "aiuvarin"];
     traits = ["elf", "aiuvarin"];
@@ -8,6 +9,7 @@ export class Aiuvarin extends Heritages {
 }
 
 export class Dromaar extends Heritages {
+    name = "Dromaar";
     lowLightVision = true;
     featChoice = ["orc"];
     traits = ["orc", "dromaar"];

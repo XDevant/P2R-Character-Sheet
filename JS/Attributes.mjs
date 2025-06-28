@@ -30,8 +30,10 @@ export default class Attributes {
     };
     checked = false;
 
-    constructor(breakDict, level=1) {
-        this.breakdown = breakDict;
+    constructor(breakDict, level) {
+        if (breakDict) {
+            this.breakdown = breakDict;
+        }
         this.calcMods(level);
     }
 
@@ -45,36 +47,43 @@ export default class Attributes {
             "cha": 0,
             };
         this.breakdown.ancestryBoosts.forEach(
-            (attrib) => mods[attrib] += 1
+            (attrib) => mods[attrib.toLowerCase()] += 1
         )
         this.breakdown.backgroundBoosts.forEach(
-            (attrib) => mods[attrib] += 1
+            (attrib) => mods[attrib.toLowerCase()] += 1
         )
         this.breakdown.classBoosts.forEach(
-            (attrib) => mods[attrib] += 1
+            (attrib) => mods[attrib.toLowerCase()] += 1
         )
         this.breakdown.ancestryFlaws.forEach((attribute) => {
-            mods[attribute] -= 1;
+            mods[attribute.toLowerCase()] -= 1;
         })
+        console.log(mods);
         this.breakdown[1].forEach(
-            (attrib) => mods[attrib] += 1
+            (attrib) => mods[attrib.toLowerCase()] += 1
         )
         if (level >= 5) {
             this.breakdown[5].forEach((attribute) => {
-            mods[attribute] += 1;
-            if (level >= 10) {
-                this.breakdown[10].forEach((attribute) => {
-                mods[attribute] += 1;
-                if (level >= 15) {
-                    this.breakdown[15].forEach((attribute) => {
-                    mods[attribute] += 1;
-                    if (level >= 20) {
-                        this.breakdown[20].forEach((attribute) => {
-                        mods[attribute] += 1;
-                        })}
-                    })
-                }})
-            }})}
+                mods[attribute.toLowerCase()] += 1;
+            });
+        }
+        if (level >= 10) {
+            this.breakdown[10].forEach((attribute) => {
+                mods[attribute.toLowerCase()] += 1;
+            });
+        }
+        if (level >= 15) {
+            this.breakdown[15].forEach((attribute) => {
+                mods[attribute.toLowerCase()] += 1;
+            });
+        }
+        if (level >= 20) {
+            this.breakdown[20].forEach((attribute) => {
+                mods[attribute.toLowerCase()] += 1;
+            });
+        }
+
+        console.log(mods);
         for (const [key, value] of Object.entries(mods)) {
             if (value > 4) {
                 const normValue = Math.floor((value - 4) / 2) + 4;
@@ -86,5 +95,5 @@ export default class Attributes {
                 }
             }
         this.checked = true;
-        }
+    }
 }
