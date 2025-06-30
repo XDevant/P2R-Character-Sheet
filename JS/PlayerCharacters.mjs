@@ -42,6 +42,15 @@ export default class PlayerCharacters extends Characters{
         this.displayHP();
     }
 
+    computeProfBonus(key) {
+        super.computeProfBonus(key);
+        this.displayProfBonus(key);
+    }
+
+    displayProfBonus(key) {
+        document.getElementById("proficiencybonus" + key).textContent = this.proficiencies.proficiencyBonuses[key];
+    }
+
     displayCharClass() {
         document.getElementById("class").textContent = this.charClass.name;
         this.displaySubclass();
@@ -71,7 +80,7 @@ export default class PlayerCharacters extends Characters{
     }
 
     displayDeity() {
-        console.log(this.deity);
+        
     }
 
     displayAttributes() {

@@ -8,7 +8,7 @@ export default class Heritages {
     traits = [];
     resistances = [];
     innateSpells = [];
-    proficiencies = [];
+    proficiencies = {1: {}};
     bonusLanguages = [];
     description = "";
     featChoice = [];
