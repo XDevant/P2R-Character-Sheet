@@ -5,16 +5,17 @@ export default class Proficiencies {
     proficiencyBonuses = {"perception": 2};
 
     constructor() {
-        const h = new Helpers();
-        this.proficiencies = h.proficienciesFactory(h.armors.concat(h.saves, h.skills, h.weapons, h.otherProficiencies));
-        this.computeAllProfBonuses();
     }
 
     collectProficiencies(profs, level) {
         Object.keys(profs).forEach(key1 => {
             if (parseInt(key1) <= level) {
                 Object.keys(profs[key1]).forEach(key2 => {
-                    this.proficiencies[key2].push(profs[key1][key2]);
+                    if (Object.keys(this.proficiencies).includes(key2)) {
+                        this.proficiencies[key2].push(profs[key1][key2]);
+                    } else {
+                        this.proficiencies[key2] =  [profs[key1][key2]];
+                    }
                 });
             }
         });
@@ -22,7 +23,7 @@ export default class Proficiencies {
 
     computeProfBonus(key) {
         if (Object.keys(this.proficiencies).includes(key)) {
-            this.proficiencyBonuses[key] = Math.max(...this.proficiencies[key]);
+            this.proficiencyBonuses[key] = Math.max(...this.proficiencies[key], 0) + Math.min(...this.proficiencies[key], 0);
         }
     }
 

@@ -42,13 +42,35 @@ export default class PlayerCharacters extends Characters{
         this.displayHP();
     }
 
+    computeRoll(key, attributemod, type){
+        super.computeRoll(key, attributemod, type);
+        this.displayRoll(key, type);
+    }
+
     computeProfBonus(key) {
         super.computeProfBonus(key);
         this.displayProfBonus(key);
     }
 
+    computeMod(key, mod) {
+        super.computeMod(key, mod);
+        this.displayMod(key, mod);
+    }
+
+    displayRoll(key, type) {
+        document.getElementById(key).textContent = this[type][key];
+    }
+
     displayProfBonus(key) {
-        document.getElementById("proficiencybonus" + key).textContent = this.proficiencies.proficiencyBonuses[key];
+        document.getElementById("proficiencybonus" + key).textContent = this.proficiencies.proficiencyBonuses[key] + this.level;
+    }
+
+    displayMod(key, mod) {
+        if (Object.keys(this.mods[mod].proficiencyBonuses).includes(key)) {
+            document.getElementById(mod + "bonus" + key).textContent = this.mods[mod].proficiencyBonuses[key];
+        } else {
+            document.getElementById(mod + "bonus" + key).textContent = 0;
+        }
     }
 
     displayCharClass() {
@@ -80,12 +102,16 @@ export default class PlayerCharacters extends Characters{
     }
 
     displayDeity() {
-        
+
     }
 
     displayAttributes() {
         Object.keys(this.attributes.mods).forEach(key => {
             document.getElementById(key.toLowerCase() + "mod").textContent = this.attributes.mods[key];
+            let targets = document.getElementsByClassName(key.toLowerCase() + "mod");
+            for (let i=0; i < targets.length; i++) {
+                targets[i].textContent = this.attributes.mods[key];
+            }
             document.getElementById(key.toLowerCase() + "boost").checked = this.attributes.boosts[key];
         })
     }
